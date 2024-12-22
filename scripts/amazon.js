@@ -48,7 +48,7 @@ for(let i = 0; i<products.length; i++){
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary">
+          <button class="add-to-cart-button button-primary js-add-to-cart" data-product-name='${product.name}'>
             Add to Cart
           </button>
         </div>        
@@ -60,3 +60,15 @@ for(let i = 0; i<products.length; i++){
 }
 
 document.querySelector('.js-products-grid').innerHTML = accum
+document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
+  button.addEventListener('click', ()=> {
+    console.log(button.dataset.productName);
+    const productName = button.dataset.productName
+    cart.push({
+      productName : productName,
+      quantity : 1
+    })
+    
+    
+  })
+})
