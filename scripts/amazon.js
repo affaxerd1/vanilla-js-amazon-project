@@ -27,7 +27,7 @@ for(let i = 0; i<products.length; i++){
           </div>
 
           <div class="product-quantity-container">
-            <select class='select'>
+            <select class='select js-quantity-selector-${product.id}'>
               <option selected value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -65,12 +65,17 @@ document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
     console.log(button.dataset.productId);
     const productId = button.dataset.productId
     
-    //USE SELECT
+    //USE SELECT : 1
 
-    let productContainer = button.closest('.product-container');
-    let itemValue = productContainer.querySelector('.select')
+    // let productContainer = button.closest('.product-container');
+    // let itemValue = productContainer.querySelector('.select')
 
-    let selectedQuantity = parseInt(itemValue.value)
+    // let selectedQuantity = parseInt(itemValue.value)
+
+    //  SELECTED VALUE : 2
+    let selectedQuantity = Number(document.querySelector(`.js-quantity-selector-${productId}`).value)
+
+
 
    
 
