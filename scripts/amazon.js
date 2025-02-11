@@ -103,9 +103,14 @@ document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
        cartQuantity += cart.quantity;
       console.log(cartQuantity);
 
+      let timeoutRefs = {};
+
+      if(timeoutRefs[productId]){
+        clearTimeout[productId]
+      }
       let showMessage =document.querySelector(`.added-to-cart-${productId}`);
       showMessage.style.opacity = 1
-      setTimeout(()=> {
+      timeoutRefs[productId] = setTimeout(()=> {
         showMessage.style.opacity = 0;
       }, 2000)
 
