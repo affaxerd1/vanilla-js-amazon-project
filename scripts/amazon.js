@@ -43,7 +43,7 @@ for(let i = 0; i<products.length; i++){
 
           <div class="product-spacer"></div>
 
-          <div class="added-to-cart">
+          <div class="added-to-cart added-to-cart-${product.id}">
             <img src="images/icons/checkmark.png">
             Added
           </div>
@@ -103,7 +103,13 @@ document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
        cartQuantity += cart.quantity;
       console.log(cartQuantity);
 
-      document.querySelector('.added-to-cart').style.opacity = 1
+      let showMessage =document.querySelector(`.added-to-cart-${productId}`);
+      showMessage.style.opacity = 1
+      setTimeout(()=> {
+        showMessage.style.opacity = 0;
+      }, 2000)
+
+    
       
 
     })
