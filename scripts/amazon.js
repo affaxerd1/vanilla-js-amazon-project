@@ -102,6 +102,8 @@ document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
     cart.forEach((cart) => {
        cartQuantity += cart.quantity;
       console.log(cartQuantity);
+
+      document.querySelector('.added-to-cart').style.opacity = 1
       
 
     })
