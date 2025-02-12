@@ -1,4 +1,5 @@
 import {cart} from '../data/cart.js'
+import  {products} from '../data/products.js'
 let accum = "";
 
 for(let i = 0; i<products.length; i++){
