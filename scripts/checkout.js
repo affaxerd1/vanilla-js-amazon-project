@@ -3,6 +3,9 @@ import {cart, removeItem} from '../data/cart.js'
 import { formatCurrency } from "./utils/money.js";
 
 
+
+
+
 let order = document.querySelector('.order-summary')
 let accum = '';
 cart.forEach((cartItem) => {
@@ -100,3 +103,23 @@ document.querySelectorAll('.js-delete-button').forEach((link) => {
   }
   )
   })
+  
+
+  function updateCart() {
+    let cartQuantity = 0;
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+      cart.forEach((cart) => {
+         cartQuantity += cart.quantity;
+        console.log(cartQuantity);
+      })
+      
+      const cartQuantityElement = document.querySelector('.cart-quantity');
+  if (cartQuantityElement) {
+    cartQuantityElement.innerHTML = `Checkout (<a class="return-to-home-link" href="amazon.html">${cartQuantity} items</a>)`;
+  }
+}
+
+
+  updateCart()
