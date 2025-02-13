@@ -1,4 +1,4 @@
-import {cart} from '../data/cart.js'
+import {cart, addToCart} from '../data/cart.js'
 import  {products} from '../data/products.js'
 let accum = "";
 
@@ -60,35 +60,7 @@ for(let i = 0; i<products.length; i++){
   
 }
 
-function addToCart(productId){
-  let matchingItem;
 
-   //USE SELECT : 1
-
-    // let productContainer = button.closest('.product-container');
-    // let itemValue = productContainer.querySelector('.select')
-
-    // let selectedQuantity = parseInt(itemValue.value)
-
-    //  SELECTED VALUE : 2
-    let selectedQuantity = Number(document.querySelector(`.js-quantity-selector-${productId}`).value)
-    
-    cart.forEach((item) => {
-      if(productId === item.productId)
-        matchingItem = item
-    })
-
-    if(matchingItem){
-      matchingItem.quantity += selectedQuantity;
-
-    }
-    else {
-      cart.push({
-        productId : productId,
-        quantity : selectedQuantity
-      })
-    }
-}
 
 function updateCartQuantity(productId) {
   let cartQuantity = 0;
