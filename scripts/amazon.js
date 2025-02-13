@@ -60,13 +60,10 @@ for(let i = 0; i<products.length; i++){
   
 }
 
-document.querySelector('.js-products-grid').innerHTML = accum
-document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
-  button.addEventListener('click', ()=> {
-    console.log(button.dataset.productId);
-    const productId = button.dataset.productId
-    
-    //USE SELECT : 1
+function addToCart(productId){
+  let matchingItem;
+
+   //USE SELECT : 1
 
     // let productContainer = button.closest('.product-container');
     // let itemValue = productContainer.querySelector('.select')
@@ -75,12 +72,6 @@ document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
 
     //  SELECTED VALUE : 2
     let selectedQuantity = Number(document.querySelector(`.js-quantity-selector-${productId}`).value)
-
-
-
-   
-
-    let matchingItem;
     
     cart.forEach((item) => {
       if(productId === item.productId)
@@ -97,8 +88,10 @@ document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
         quantity : selectedQuantity
       })
     }
+}
 
-    let cartQuantity = 0;
+function updateCartQuantity(productId) {
+  let cartQuantity = 0;
 
     cart.forEach((cart) => {
        cartQuantity += cart.quantity;
@@ -115,21 +108,26 @@ document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
         showMessage.style.opacity = 0;
       }, 2000)
 
-    
-      
-
     })
 
     console.log(cart);
-    document.querySelector('.cart-quantity').innerHTML=cartQuantity;
+    document.querySelector('.cart-quantity').innerHTML=cartQuantity;  
+}
+
+document.querySelector('.js-products-grid').innerHTML = accum
+document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
+  button.addEventListener('click', ()=> {
+    console.log(button.dataset.productId);
+    const productId = button.dataset.productId
+    
+
+
+    addToCart(productId)
+
+    updateCartQuantity(productId)
 
       let testselect=document.querySelector('.select')
-      console.log(testselect.options[testselect.selectedIndex].value);
-      
-
-
-    
-    
+      console.log(testselect.options[testselect.selectedIndex].value);  
     
   })
 })
