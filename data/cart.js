@@ -37,3 +37,16 @@ export function addToCart(productId){
       })
     }
 }
+
+export function removeItem(productId){
+  let newCart = [];
+  
+  cart.forEach((cartItem)=> {
+    if(cartItem.productId !== productId){
+      newCart.push(productId)
+      console.log(newCart);
+      
+    }
+    
+  })
+}

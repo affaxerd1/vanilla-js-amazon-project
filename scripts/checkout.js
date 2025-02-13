@@ -1,5 +1,5 @@
 import { products } from "../data/products.js";
-import {cart} from '../data/cart.js' 
+import {cart, removeItem} from '../data/cart.js' 
 import { formatCurrency } from "./utils/money.js";
 
 
@@ -32,7 +32,7 @@ cart.forEach((cartItem) => {
                 <span class="update-quantity-link link-primary">
                   Update
                 </span>
-                <span class="delete-quantity-link link-primary">
+                <span class="delete-quantity-link link-primary js-delete-button  " data-product-id = '${product.id}'>
                   Delete
                 </span>
               </div>
@@ -43,7 +43,7 @@ cart.forEach((cartItem) => {
                 Choose a delivery option:
               </div>
               <div class="delivery-option">
-                <input type="radio" checked class="delivery-option-input" name="delivery-option-${product.id}">
+                <input type="radio" checked class="delivery-option-input" name="delivery-option-${product.id} ">
                 <div>
                   <div class="delivery-option-date">
                     Tuesday, June 21
@@ -85,3 +85,13 @@ cart.forEach((cartItem) => {
     }
   })
 });
+
+document.querySelectorAll('.js-delete-button').forEach((link) => {
+  link.addEventListener('click',
+  ()=>{
+    const productId = link.dataset.productId;
+    console.log(productId);
+    removeItem(productId)
+  }
+  )
+  })
