@@ -1,6 +1,6 @@
-// import { products } from "../data/products.js";
-// import {cart, removeItem} from '../data/cart.js' 
-// import { formatCurrency } from "./utils/money.js";
+import { products } from "../data/products.js";
+import {cart, removeItem} from '../data/cart.js' 
+import { formatCurrency } from "./utils/money.js";
 
 
 let order = document.querySelector('.order-summary')
