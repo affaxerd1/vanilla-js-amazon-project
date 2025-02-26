@@ -1,10 +1,8 @@
 import { products } from "../data/products.js";
 import {cart, removeItem} from '../data/cart.js' 
 import { formatCurrency } from "./utils/money.js";
-
-
-
-
+import Dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
+import {deliveryOptions} from '../data/deliveryOptions.js'
 
 let order = document.querySelector('.order-summary')
 let accum = '';
@@ -105,6 +103,13 @@ document.querySelectorAll('.js-delete-button').forEach((link) => {
   })
   
 
+  function deliveryOptions(){
+    let deliveryOptionsHTML;
+    cart.forEach((catItem) => {
+      
+    })
+  }
+
   function updateCart() {
     let cartQuantity = 0;
 
@@ -121,5 +126,4 @@ document.querySelectorAll('.js-delete-button').forEach((link) => {
   }
 }
 
-
-  updateCart()
+ updateCart()
