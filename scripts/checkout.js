@@ -1,12 +1,12 @@
 import { products } from "../data/products.js";
-import {cart, removeItem} from '../data/cart.js' 
+import {cart, removeItem, updateDeliveryOption} from '../data/cart.js' 
 import { formatCurrency } from "./utils/money.js";
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import {deliveryOptions} from '../data/deliveryOptions.js'
 
 let order = document.querySelector('.order-summary')
 let accum = '';
-cart.forEach((cartItem) => {
+cart.forEach((cartItem, updateDeliveryOption) => {
   products.forEach((product) => {
     if (cartItem.productId === product.id) {
       console.log(cartItem);
@@ -99,13 +99,13 @@ document.querySelectorAll('.js-delete-button').forEach((link) => {
 
       const isChecked = deliveryOption.id === cartItem.deliveryOptionId
       deliveryOptionsaccum += `
-              <div class="delivery-option">
-                <input type="radio" ${ isChecked ? 'checked' : ''} class="delivery-option-input" name="delivery-option-${product.id}">
+              <div class="delivery-option js-delivery-option " data-delivery-option-Id= "${deliveryOption.id}" data-product-id= "${product.id}">
+                <input type="radio" ${ isChecked ? 'checked' : ''} class="delivery-option-input" name="delivery-option-${product.id}"  >
                 <div>
-                  <div class="delivery-option-date">
+                  <div class="delivery-option-date" >
                     ${dateString}
                   </div>
-                  <div class="delivery-option-price">
+                  <div class="delivery-option-price" >
                     ${priceString} Shipping
                   </div>
                 </div>
@@ -133,3 +133,15 @@ document.querySelectorAll('.js-delete-button').forEach((link) => {
 }
 
  updateCart()
+
+
+document.querySelectorAll('.js-delivery-option').forEach((element) => {
+
+  element.addEventListener('click', ()=> {
+    const {productId, deliveryOptionId} = element.dataset;
+    //This is a shorthand property for:
+    // const productId = element.dataset.productId;
+    // const deliveryOptionId = element.dataset.deliveryOptionId
+    updateDeliveryOption(productId, deliveryOptionId)
+  })
+})
