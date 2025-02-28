@@ -1,8 +1,8 @@
-function Cart(){
+function Cart(localStorageKey){
     const cart = {
         cartItems: undefined,
         loadFromStorage(){
-            this.cartItems = JSON.parse(localStorage.getItem('cart-oop'));
+            this.cartItems = JSON.parse(localStorage.getItem('localStorageKey'));
     
             if (!this.cartItems){
                 this.cartItems = [
@@ -21,7 +21,7 @@ function Cart(){
         },
     
         saveToStorage(){
-            localStorage.setItem('cart-oop', JSON.stringify(this.cartItems))
+            localStorage.setItem('localStorageKey', JSON.stringify(this.cartItems))
           },
         
           addToCart(productId){
@@ -92,7 +92,8 @@ function Cart(){
     return cart
 }
 
-let cart = Cart()
+let cart = Cart('cart-oop')
+let businessCart = Cart('cart-business')
 
 
 
@@ -100,6 +101,8 @@ let cart = Cart()
 cart.loadFromStorage()
 
 console.log(cart);
+console.log(businessCart);
+
 
     
 
