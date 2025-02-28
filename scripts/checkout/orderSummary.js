@@ -118,7 +118,7 @@ export function renderOrderSummary(){
           `
         })
 
-        renderPaymentSummary()
+
 
       return deliveryOptionsaccum;
       }
@@ -151,6 +151,7 @@ export function renderOrderSummary(){
         // const deliveryOptionId = element.dataset.deliveryOptionId
         updateDeliveryOption(productId, deliveryOptionId);
         renderOrderSummary();
+        renderPaymentSummary();
       })
     })
 
