@@ -3,6 +3,11 @@ class Cart{
   cartItems = undefined;
   localStorageKey = undefined;
 
+  constructor(localStorageKey){
+    this.localStorageKey = this.localStorageKey;
+    this.loadFromStorage;
+  }
+
   loadFromStorage(){
     this.cartItems = JSON.parse(localStorage.getItem(this.localStorageKey));
 
@@ -91,15 +96,8 @@ updateDeliveryOption(productId, deliveryOptionId){
 }
 
 
-let cart = new Cart()
-cart.localStorageKey = 'cart-classes'
-
-
-
-
-cart.loadFromStorage()
-
-console.log(cart);
+let cart = new Cart('cart-classes')
+let businessCart = new Cart('cart-business')
 
 
 
