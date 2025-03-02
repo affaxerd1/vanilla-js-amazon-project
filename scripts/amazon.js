@@ -41,6 +41,8 @@ for(let i = 0; i<products.length; i++){
               <option value="9">9</option>
               <option value="10">10</option>
             </select>
+
+            ${product.getExtraInfo()}
           </div>
 
           <div class="product-spacer"></div>
