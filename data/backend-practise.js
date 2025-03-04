@@ -1,7 +1,7 @@
 const backend = new XMLHttpRequest();
 
 backend.addEventListener('load', ()=>{
-    console.log(Response);
+    consolespe.log(Response);
     
 })
 backend.open('GET', 'https://supersimplebackend.dev');
