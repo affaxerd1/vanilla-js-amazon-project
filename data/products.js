@@ -1,4 +1,5 @@
 import { formatCurrency } from "../scripts/utils/money.js";
+import { renderProductsGrid } from "../scripts/amazon.js";
 
 export function getProduct(productId){
  let matchingProduct;
@@ -63,7 +64,7 @@ class Clothing extends Product{
 }
 export let products = [];
 
-function loadProducts(){
+export function loadProducts(fun){
   
   const xhr=new XMLHttpRequest()
   xhr.addEventListener('load', ()=>{
@@ -73,13 +74,16 @@ function loadProducts(){
       }
 
       return new Product(product)
+      
     })
     
-    console.log(products);
+    console.log('load products');
+    fun();
     
-  })
+  });
   xhr.open('GET', 'https://supersimplebackend.dev/products')
   xhr.send()
+  
 
 }
 
