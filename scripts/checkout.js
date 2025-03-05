@@ -1,16 +1,21 @@
 import { renderOrderSummary } from "./checkout/orderSummary.js";
 import { renderPaymentSummary } from "./checkout/paymentSummary.js";
-import { loadProducts } from "../data/products.js";
+import {  loadProductsFetch } from "../data/products.js";
 import { loadCart } from "../data/cart.js";
 
 //running  multiple promises at a time
 Promise.all([
 
-    new Promise((resolve)=>{
-        loadProducts(()=>{
-            resolve();
-        });
-    }),
+    //for load products fetch
+
+    loadProductsFetch()
+    //when using load products 
+    // new Promise((resolve)=>{
+    //     loadProductsFetch(()=>{
+    //         resolve();
+    //     });
+    // })
+    ,
 
     new Promise((resolve)=> {
         loadCart(()=>{
