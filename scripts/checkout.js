@@ -3,6 +3,22 @@ import { renderPaymentSummary } from "./checkout/paymentSummary.js";
 import {  loadProductsFetch } from "../data/products.js";
 import { loadCart } from "../data/cart.js";
 
+
+//unding async await instead of load page
+ async function loadPage(){
+    await loadProductsFetch();
+
+    await new Promise((resolve) => {
+        loadCart(()=> {
+            resolve();
+        })
+
+        renderOrderSummary();
+        renderPaymentSummary();
+    })
+ }
+loadPage()
+/*
 //running  multiple promises at a time
 Promise.all([
 
@@ -27,6 +43,8 @@ Promise.all([
     renderPaymentSummary();
 });
 
+
+*/
 //Using promises instead of callbacks
 //This however runs one promise at at time
 /*
