@@ -10,7 +10,7 @@ export function renderOrderSummary(){
 
     let order = document.querySelector('.order-summary')
     let accum = '';
-    cart.forEach((cartItem, updateDeliveryOption) => {
+    cart.forEach((cartItem) => {
       products.forEach((product) => {
         if (cartItem.productId === product.id) {
           console.log(cartItem);
@@ -18,6 +18,8 @@ export function renderOrderSummary(){
           //modifying date
           const deliveryOptionId = cartItem.deliveryOptionId;
           let deliveryOption;
+          
+
           deliveryOptions.forEach((option) => {
             if(option.id === deliveryOptionId){
             deliveryOption = option;

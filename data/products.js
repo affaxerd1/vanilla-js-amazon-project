@@ -116,7 +116,7 @@ export function loadProducts(fun){
 
 // }
 
-// loadProducts()
+
 
 /*
 
