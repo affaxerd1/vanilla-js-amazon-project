@@ -2,6 +2,7 @@ import {cart, removeItem, updateDeliveryOption} from '../../data/cart.js'
 import { deliveryOptions, getDeliveryOption } from '../../data/deliveryOptions.js';
 import { products, getProduct } from "../../data/products.js";
 import { formatCurrency } from '../utils/money.js';
+import { addOrder } from '../../data/orders.js';
 
 export function renderPaymentSummary(){
     let productPriceCents = 0;
@@ -87,10 +88,10 @@ export function renderPaymentSummary(){
      console.log("order =");
      
      console.log(order);
+
+     addOrder(order)
      
      })
-     
-     
-     
+
 
  }
