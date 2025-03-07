@@ -74,24 +74,35 @@ export function renderPaymentSummary(){
      document.querySelector('.js-payment-summary').innerHTML =paymentSummaryHTML
 
      document.querySelector('.js-place-order').addEventListener('click', async()=>{
-      const response = await fetch('https://supersimplebackend.dev/orders',{
-        method : 'POST',
-        headers : {
-          'Content-Type' : 'application/json'
-        },
-        body : JSON.stringify({
-          cart : cart
-        })
-      });
+      try{
+        const response = await fetch('https://supersimplebackend.dev/orders',{
+          method : 'POST',
+          headers : {
+            'Content-Type' : 'application/json'
+          },
+          body : JSON.stringify({
+            cart : cart
+          })
+        });
+  
+       const order =await response.json()
+       console.log("order =");
+       
+       console.log(order);
+  
 
-     const order =await response.json()
-     console.log("order =");
-     
-     console.log(order);
+      //call the add order function to store the orders in local storage
+       addOrder(order)
+      }
 
-     addOrder(order)
+      catch(error){
+        console.log("Unexpected error occurred");
+        
+      }
      
-     })
+      //redirect to orders page after placing order
+      window.location.href = 'orders.html'
+     });
 
 
  }
