@@ -6,16 +6,25 @@ import { loadCart } from "../data/cart.js";
 
 //unding async await instead of load page
  async function loadPage(){
-    await loadProductsFetch();
 
-    await new Promise((resolve) => {
-        loadCart(()=> {
-            resolve();
+    try {
+        await loadProductsFetch();
+
+
+        await new Promise((resolve) => {
+            loadCart(()=> {
+                resolve();
+            })
+    
+            renderOrderSummary();
+            renderPaymentSummary();
         })
-
-        renderOrderSummary();
-        renderPaymentSummary();
-    })
+    }
+    catch(error){
+        console.log("There is an error");
+        
+    }
+   
  }
 loadPage()
 /*

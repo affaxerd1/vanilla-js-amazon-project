@@ -91,7 +91,7 @@ export function loadProductsFetch(fun){
   return promise;
 }
 
-loadProductsFetch()
+
 
 /*
 loadProductsFetch().then(()=> {
