@@ -67,7 +67,7 @@ class Clothing extends Product{
 
 export let products = [];
 
-export function loadProductsFetch(){
+export function loadProductsFetch(fun){
   const promise = fetch('https://supersimplebackend.dev/products').then((response)=>{
     return response.json()
     
@@ -80,12 +80,18 @@ export function loadProductsFetch(){
         return new Product(item)
     })
     console.log('load products using fetch');
+    fun()
     
+    
+  }).catch(()=>{
+    console.log("an error occurred");
     
   })
 
   return promise;
 }
+
+loadProductsFetch()
 
 /*
 loadProductsFetch().then(()=> {
